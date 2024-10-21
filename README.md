@@ -1,42 +1,113 @@
-# Full Stack Weather Monitoring App
+# Full Stack Real-Time Data Processing System for Weather Monitoring with Rollups and Aggregates
 
-This project is a full-stack weather monitoring application that fetches real-time weather data from a backend and displays the information on the frontend. The app also includes a visual temperature trend using a chart. It is primarily designed to track weather for selected cities and provide a clean, user-friendly interface for viewing current weather conditions.
+This project is a full-stack weather monitoring application that fetches real-time weather data from a backend and displays the information on the frontend. The app also includes visualizations for daily weather trends, alerts, and more, with data fetched from the OpenWeatherMap API. It monitors the weather of major Indian metros and triggers alerts based on user-configurable thresholds.
 
 ## Table of Contents
-
-- [Project Overview](#project-overview)
+- [Overview](#overview)
 - [Features](#features)
-- [Tech Stack](#tech-stack)
-- [Project Structure](#project-structure)
+- [Data Source](#data-source)
+- [Rollups & Aggregates](#rollups--aggregates)
+- [System Architecture](#system-architecture)
 - [Setup and Installation](#setup-and-installation)
   - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
   - [Environment Variables](#environment-variables)
-  - [Installation Steps](#installation-steps)
-- [Running the Project](#running-the-project)
-- [Ignore Node Modules](#ignore-node-modules)
-- [Supported Cities](#supported-cities)
-- [API Endpoints](#api-endpoints)
-- [License](#license)
+  - [Run the Application](#run-the-application)
+  - [Run with Docker](#run-with-docker)
+- [Testing](#testing)
+- [Visualizations](#visualizations)
+- [Design Choices](#design-choices)
+- [Dependencies](#dependencies)
+- [Future Enhancements](#future-enhancements)
 
-## Project Overview
-
-The Weather Monitoring App allows users to view real-time weather data for selected cities. It provides key weather details such as temperature, humidity, and weather conditions (e.g., rain, mist, clear). The app visualizes temperature trends over time using a line chart. It is particularly useful for users who want to monitor weather changes in real-time for specific locations.
-
-**Main Purpose**: This application is developed for monitoring and displaying current weather data for different cities, allowing users to keep track of weather conditions visually with charts and helpful metrics like temperature and humidity.
+## Overview
+This application monitors real-time weather conditions and provides summarized insights using rollups and aggregates. The system continuously retrieves weather data from the OpenWeatherMap API for major Indian metros (Delhi, Mumbai, Chennai, Bangalore, Kolkata, Hyderabad), calculating daily summaries, visualizing trends, and generating alerts based on configurable thresholds.
 
 ## Features
+- **Real-time Weather Data:** Fetches weather data every 5 minutes from the OpenWeatherMap API.
+- **Daily Summaries:** Provides average, max, min temperature, and dominant weather condition for each day.
+- **Alerts:** Triggers alerts if user-configurable thresholds (e.g., temperature above 35°C) are breached.
+- **Temperature Conversion:** Converts temperature from Kelvin to Celsius or Fahrenheit based on user preference.
+- **Visualizations:** Displays daily weather summaries, historical trends, and alerts using charts.
 
-- Fetches real-time weather data from the backend for multiple cities.
-- Displays important weather information like temperature, humidity, and weather conditions.
-- Visualizes the temperature trend using a line chart.
-- Responsive and user-friendly interface.
+## Data Source
+The system uses the OpenWeatherMap API to fetch weather data for the following cities:
+- Delhi
+- Mumbai
+- Chennai
+- Bangalore
+- Kolkata
+- Hyderabad
 
-## Tech Stack
+Sign up for a free API key [here](https://openweathermap.org/).
 
-- **Frontend**: React.js, Axios, Recharts
-- **Backend**: Node.js, Express.js
-- **Database**: No database needed for this version
-- **Styling**: CSS, Responsive Design
+## Rollups & Aggregates
+### Daily Weather Summary:
+- **Average Temperature**
+- **Maximum Temperature**
+- **Minimum Temperature**
+- **Dominant Weather Condition** (based on frequency of occurrence)
 
-## Project Structure
+### Alerting Thresholds:
+- User-configurable thresholds for temperature (e.g., alert if temperature exceeds 35°C for two consecutive updates).
+- Triggers alerts on threshold breaches (via console or email).
+
+## System Architecture
+- **Frontend:** React.js
+- **Backend:** Node.js/Express
+- **Database:** MongoDB (to store daily summaries)
+- **API:** OpenWeatherMap API (for real-time data)
+- **Visualizations:** Recharts (for weather trends and alerts)
+
+## Setup and Installation
+
+### Prerequisites
+- **Node.js:** [Install Node.js](https://nodejs.org/) to run the backend.
+- **MongoDB:** [Install MongoDB](https://www.mongodb.com/) or use a cloud MongoDB service like MongoDB Atlas.
+- 
+### Installation
+1. **Clone the repository:**
+    ```bash
+    git clone https://github.com/your-repo/weather-monitoring-system.git
+    cd weather-monitoring-system
+    ```
+
+2. **Install backend dependencies:**
+    ```bash
+    cd backend
+    npm install
+    ```
+
+3. **Install frontend dependencies:**
+    ```bash
+    cd ../frontend
+    npm install
+    ```
+4. **Configure Scripts:**
+Make sure your package.json in the root contains a script to run both the frontend and backend together using concurrently:
+ ```bash
+  "scripts": {
+  "start": "concurrently \"npm run start:frontend\" \"npm run start:backend\"",
+  "start:frontend": "npm --prefix frontend start",
+  "start:backend": "npm --prefix backend start"
+}
+```
+5.**Running the Project:**
+To run both the frontend and backend at the same time, simply run:
+```bash
+npm start
+```
+This will start the backend server and the frontend running at http://localhost:3000.
+
+
+
+
+
+
+
+
+
+
+
+
 
