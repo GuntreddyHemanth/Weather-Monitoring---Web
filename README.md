@@ -99,8 +99,25 @@ npm start
 ```
 This will start the backend server and the frontend running at http://localhost:3000.
 
+**License**
+This project is licensed under the MIT License - see the LICENSE file for details.
+```bash
 
+---
 
+### Explanation:
+
+1. **Project Overview**: Gives a high-level introduction to what the app does.
+2. **Features**: Lists out the main features of the app.
+3. **Tech Stack**: Highlights the tools and technologies used.
+4. **Project Structure**: Shows how the project is organized.
+5. **Setup and Installation**: Step-by-step guide to setting up the project locally.
+6. **Running the Project**: Provides the command to start both frontend and backend simultaneously using `npm start`.
+7. **Ignore Node Modules**: Mentions how the `node_modules` folders are ignored using `.gitignore`.
+8. **API Endpoints**: Documents the backend API for weather data.
+
+This `README.md` should provide a clear and professional overview of the project for developers and users.
+```
 
 
 
