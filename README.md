@@ -63,8 +63,7 @@ Sign up for a free API key [here](https://openweathermap.org/).
 
 ### Prerequisites
 - **Node.js:** [Install Node.js](https://nodejs.org/) to run the backend.
-- **MongoDB:** [Install MongoDB](https://www.mongodb.com/) or use a cloud MongoDB service like MongoDB Atlas.
-- 
+- **MongoDB:** [Install MongoDB](https://www.mongodb.com/) or use a cloud MongoDB service like MongoDB Atlas. 
 ### Installation
 1. **Clone the repository:**
     ```bash
